@@ -1,8 +1,10 @@
 import React from 'react'
 
+import styles from './Footer.module.css'
+
 export const Footer = () => {
   return (
-    <footer className="page-footer blue darken-4 ">
+    <footer className={` ${styles.footer} blue darken-4 `}>
       <div className="container" />
       <div className="footer-copyright">
         <div className="container">
