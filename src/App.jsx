@@ -1,1 +1,3 @@
-export const App = () => <div>Movies</div>;
+import { Header } from './layout'
+
+export const App = () => <Header />
