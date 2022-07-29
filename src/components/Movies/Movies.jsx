@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { MovieCard } from './MovieCard'
+import styles from './Movies.module.css'
 
 export const Movies = ({ movies }) => {
   if (!movies) {
-    return <div>loading...</div>
+    return <h4>loading...</h4>
   }
 
   return (
-    <div className="movies">
+    <div className={styles.movies}>
       {movies.map(({ Poster, Title, imdbID }) => {
         return <MovieCard key={imdbID} Title={Title} Poster={Poster} />
       })}

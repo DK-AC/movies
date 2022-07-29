@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
+import { Movies } from '../../components'
+
 import styles from './Main.module.css'
-import { Movies } from './Movies'
 
 export const Main = () => {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
-    fetch('https://www.omdbapi.com/?apikey=15d9f402&s=boys')
+    fetch('https://www.omdbapi.com/?apikey=15d9f402&s=matrix')
       .then(response => {
         return response.json()
       })
