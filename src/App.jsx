@@ -1,3 +1,10 @@
-import { Header } from './layout'
+import { Footer, Header } from './layout'
 
-export const App = () => <Header />
+export const App = () => {
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  )
+}
