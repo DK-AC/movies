@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
+
 import styles from './SearchType.module.css'
 
 export const SearchType = ({ onChangeSearchType }) => {
@@ -14,39 +16,30 @@ export const SearchType = ({ onChangeSearchType }) => {
 
   return (
     <div className={styles.searchType}>
-      <label htmlFor="all">
-        <input
-          id="all"
-          name="groupType"
-          type="radio"
-          value="all"
-          checked={valueType === 'all'}
-          onChange={changeValueTypeHandle}
-        />
-        <span>All</span>
-      </label>
-      <label htmlFor="movie">
-        <input
-          id="movie"
-          name="groupType"
-          type="radio"
-          value="movie"
-          checked={valueType === 'movie'}
-          onChange={changeValueTypeHandle}
-        />
-        <span>Only movies</span>
-      </label>
-      <label htmlFor="series">
-        <input
-          id="series"
-          name="groupType"
-          type="radio"
-          value="series"
-          checked={valueType === 'series'}
-          onChange={changeValueTypeHandle}
-        />
-        <span>Only serials</span>
-      </label>
+      <SearchTypeInput
+        id="all"
+        htmlFor="all"
+        name="groupType"
+        value="all"
+        valueType={valueType}
+        callback={changeValueTypeHandle}
+      />
+      <SearchTypeInput
+        id="movie"
+        htmlFor="movie"
+        name="groupType"
+        value="movie"
+        valueType={valueType}
+        callback={changeValueTypeHandle}
+      />
+      <SearchTypeInput
+        id="series"
+        htmlFor="series"
+        name="groupType"
+        value="series"
+        valueType={valueType}
+        callback={changeValueTypeHandle}
+      />
     </div>
   )
 }

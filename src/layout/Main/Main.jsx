@@ -25,7 +25,7 @@ export const Main = () => {
       })
 
     setIsLoading(false)
-  }, [movieTitle, searchTypeMovie])
+  }, [movieTitle, searchTypeMovie, isLoading])
 
   const changeMovieTitleHandle = title => {
     setMovieTitle(title)
