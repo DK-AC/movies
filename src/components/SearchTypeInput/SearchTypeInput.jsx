@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const SearchTypeInput = ({ name, htmlFor, value, callback, id, valueType }) => {
+export const SearchTypeInput = ({ name, callback, valueType, value }) => {
   return (
-    <label htmlFor={htmlFor}>
+    <label htmlFor={value}>
       <input
-        id={id}
+        id={value}
         name={name}
         type="radio"
         value={value}

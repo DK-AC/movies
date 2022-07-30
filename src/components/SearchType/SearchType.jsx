@@ -17,26 +17,20 @@ export const SearchType = ({ onChangeSearchType }) => {
   return (
     <div className={styles.searchType}>
       <SearchTypeInput
-        id="all"
-        htmlFor="all"
-        name="groupType"
         value="all"
+        name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
-        id="movie"
-        htmlFor="movie"
-        name="groupType"
         value="movie"
+        name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
-        id="series"
-        htmlFor="series"
-        name="groupType"
         value="series"
+        name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
       />
