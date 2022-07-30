@@ -1,11 +1,13 @@
 import React from 'react'
 
+import { Preloader } from '../Preloader/Preloader'
+
 import { MovieCard } from './MovieCard'
 import styles from './Movies.module.css'
 
 export const Movies = ({ movies }) => {
   if (!movies) {
-    return <h4>loading...</h4>
+    return <Preloader />
   }
 
   return (
