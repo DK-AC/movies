@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 
-export const Search = () => {
-  const [value, setValue] = useState('')
+export const Search = ({ onChangeMovieTitle }) => {
+  const [movieTitle, setMovieTitle] = useState('')
 
   const onSearchMoviesHandle = event => {
-    setValue(event.currentTarget.value)
+    setMovieTitle(event.currentTarget.value)
+  }
+
+  const onChangeMovieTitleForSearch = () => {
+    onChangeMovieTitle(movieTitle)
   }
 
   return (
@@ -15,8 +19,9 @@ export const Search = () => {
             placeholder="search"
             type="search"
             className="validate"
-            value={value}
+            value={movieTitle}
             onChange={onSearchMoviesHandle}
+            onBlur={onChangeMovieTitleForSearch}
           />
         </div>
       </div>
