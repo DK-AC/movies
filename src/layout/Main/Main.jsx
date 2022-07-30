@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Movies, Preloader } from '../../components'
-import { Search } from '../../components/Search/Search'
+import { Movies, Preloader, Search } from '../../components'
 
 import styles from './Main.module.css'
 

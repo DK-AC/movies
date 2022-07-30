@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import styles from './Search.module.css'
+
 export const Search = ({ onChangeMovieTitle }) => {
   const [movieTitle, setMovieTitle] = useState('')
 
@@ -7,24 +9,26 @@ export const Search = ({ onChangeMovieTitle }) => {
     setMovieTitle(event.currentTarget.value)
   }
 
-  const onChangeMovieTitleForSearch = () => {
+  const changeMovieTitleSearchClick = () => {
     onChangeMovieTitle(movieTitle)
   }
 
   return (
     <div className="row">
-      <div className="col s12">
-        <div className="row">
-          <input
-            placeholder="search"
-            type="search"
-            className="validate"
-            value={movieTitle}
-            onChange={onSearchMoviesHandle}
-            onBlur={onChangeMovieTitleForSearch}
-          />
-        </div>
-      </div>
+      <input
+        placeholder="search"
+        type="search"
+        className="validate"
+        value={movieTitle}
+        onChange={onSearchMoviesHandle}
+      />
+      <button
+        className={`btn ${styles.searchButton} blue darken-4`}
+        type="button"
+        onClick={changeMovieTitleSearchClick}
+      >
+        search
+      </button>
     </div>
   )
 }
