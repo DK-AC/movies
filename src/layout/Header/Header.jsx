@@ -11,7 +11,7 @@ export const Header = () => {
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
-            <a href="sass.html">Sass</a>
+            <a href="sass.html">Home</a>
           </li>
         </ul>
       </div>

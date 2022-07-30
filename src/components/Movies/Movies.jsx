@@ -6,8 +6,8 @@ import styles from './Movies.module.css'
 export const Movies = ({ movies }) => {
   return (
     <div className={styles.movies}>
-      {movies.map(({ Poster, Title, imdbID }) => {
-        return <MovieCard key={imdbID} Title={Title} Poster={Poster} />
+      {movies.map(({ Poster, Title, imdbID, Type }) => {
+        return <MovieCard key={imdbID} Title={Title} Poster={Poster} Type={Type} />
       })}
     </div>
   )

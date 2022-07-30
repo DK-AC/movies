@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MovieCard = ({ Poster, Title }) => {
+export const MovieCard = ({ Poster, Title, Type }) => {
   return (
     <div className="row">
       <div className="col s12">
@@ -12,6 +12,9 @@ export const MovieCard = ({ Poster, Title }) => {
           <div className="card-content center">
             <p>
               <b>{Title}</b>
+            </p>
+            <p>
+              <span>{Type}</span>
             </p>
           </div>
         </div>
