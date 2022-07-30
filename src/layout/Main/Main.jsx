@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Movies } from '../../components'
+import { Movies, Preloader } from '../../components'
 
 import styles from './Main.module.css'
 
@@ -17,7 +17,7 @@ export const Main = () => {
 
   return (
     <main className={styles.content}>
-      <Movies movies={movies} />
+      {movies.length ? <Movies movies={movies} /> : <Preloader />}
     </main>
   )
 }
