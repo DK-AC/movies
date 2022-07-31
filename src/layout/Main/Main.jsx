@@ -4,6 +4,9 @@ import { Movies, Preloader, Search, SearchType } from '../../components'
 
 import styles from './Main.module.css'
 
+const API_KEY = process.env.REACT_APP_API_KEY
+const BASE_URL = process.env.REACT_APP_BASE_URL
+
 export const Main = () => {
   const [movies, setMovies] = useState([])
   const [movieTitle, setMovieTitle] = useState('matrix')
@@ -15,7 +18,7 @@ export const Main = () => {
 
     setIsLoading(true)
 
-    fetch(`https://www.omdbapi.com/?apikey=15d9f402&s=${movieTitle}${searchType}`)
+    fetch(`${BASE_URL}?apikey=${API_KEY}&s=${movieTitle}${searchType}`)
       .then(response => {
         return response.json()
       })
