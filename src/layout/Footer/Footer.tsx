@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC, ReactElement } from 'react'
 
 import styles from './Footer.module.css'
 
-export const Footer = () => {
+export const Footer: FC = (): ReactElement | null => {
   return (
     <footer className={` ${styles.footer} blue darken-4 `}>
       <div className="container" />
