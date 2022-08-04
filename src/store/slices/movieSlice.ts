@@ -1,25 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { MoviesType } from '../../types'
+import { MoviesType } from '../types'
 
-export interface MovieState {
-  movies: MoviesType[]
-}
-
-const initialState: MovieState = {
-  movies: [],
+const initialState = {
+  movies: [] as MoviesType[],
 }
 
 export const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    getMovies: state => {
-      state.movies = []
+    setMovies: (state: InitialStateType, action: PayloadAction<MoviesType[]>) => {
+      state.movies = action.payload
     },
   },
 })
 
-export const { getMovies } = movieSlice.actions
+export const { setMovies } = movieSlice.actions
 
-export default movieSlice.reducer
+export const movieReducer = movieSlice.reducer
+
+export type InitialStateType = typeof initialState
