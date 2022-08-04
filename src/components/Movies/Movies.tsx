@@ -1,15 +1,9 @@
 import { FC } from 'react'
 
+import { MoviesType } from '../../types'
+
 import { MovieCard } from './MovieCard'
 import styles from './Movies.module.css'
-
-export type MoviesType = {
-  Poster: string
-  Title: string
-  Type: string
-  Year: string
-  imdbID: string
-}
 
 type PropsType = {
   movies: MoviesType[]
