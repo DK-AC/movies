@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react'
 
+import { EMPTY_STRING } from '../../constans'
 import { Nullable } from '../../types'
 
 import styles from './Search.module.css'
@@ -11,20 +12,20 @@ type PropsType = {
 export const Search: FC<PropsType> = props => {
   const { onChangeMovieTitle } = props
 
-  const [movieTitle, setMovieTitle] = useState<string>('')
-  const [error, setError] = useState<Nullable<string>>('')
+  const [movieTitle, setMovieTitle] = useState<string>(EMPTY_STRING)
+  const [error, setError] = useState<Nullable<string>>(EMPTY_STRING)
 
   const onSearchMoviesHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     setMovieTitle(event.currentTarget.value)
   }
 
   const searchMovieTitleClick = (): void => {
-    if (movieTitle.trim() === '') {
+    if (movieTitle.trim() === EMPTY_STRING) {
       setError('Enter movie title')
     } else {
       onChangeMovieTitle(movieTitle)
       setError(null)
-      setMovieTitle('')
+      setMovieTitle(EMPTY_STRING)
     }
   }
 
@@ -44,7 +45,7 @@ export const Search: FC<PropsType> = props => {
       >
         search
       </button>
-      {error ? <div className={styles.error}>{error}</div> : ''}
+      {error ? <div className={styles.error}>{error}</div> : EMPTY_STRING}
     </div>
   )
 }

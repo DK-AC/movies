@@ -11,7 +11,7 @@ type PropsType = {
 export const SearchType: FC<PropsType> = props => {
   const { onChangeSearchType } = props
 
-  const [valueType, setValueType] = useState('series')
+  const [valueType, setValueType] = useState('all')
 
   const changeValueTypeHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget

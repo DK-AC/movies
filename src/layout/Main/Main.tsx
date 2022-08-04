@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
+import { EMPTY_STRING } from '../../constans'
 
 import styles from './Main.module.css'
 
@@ -14,7 +15,9 @@ export const Main: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const searchType = `${searchTypeMovie === 'all' ? '' : `&type=${searchTypeMovie}`}`
+    const searchType = `${
+      searchTypeMovie === 'all' ? EMPTY_STRING : `&type=${searchTypeMovie}`
+    }`
 
     setIsLoading(true)
 
