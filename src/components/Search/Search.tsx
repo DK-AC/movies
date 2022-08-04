@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
+
+import { Nullable } from '../../types'
 
 import styles from './Search.module.css'
 
-export const Search = ({ onChangeMovieTitle }) => {
-  const [movieTitle, setMovieTitle] = useState('')
-  const [error, setError] = useState('')
+type PropsType = {
+  onChangeMovieTitle: (MovieTitle: string) => void
+}
 
-  const onSearchMoviesHandle = event => {
+export const Search: FC<PropsType> = props => {
+  const { onChangeMovieTitle } = props
+
+  const [movieTitle, setMovieTitle] = useState<string>('')
+  const [error, setError] = useState<Nullable<string>>('')
+
+  const onSearchMoviesHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     setMovieTitle(event.currentTarget.value)
   }
 
-  const searchMovieTitleClick = () => {
+  const searchMovieTitleClick = (): void => {
     if (movieTitle.trim() === '') {
       setError('Enter movie title')
     } else {

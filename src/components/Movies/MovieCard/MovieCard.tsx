@@ -1,6 +1,14 @@
-import React from 'react'
+import { FC } from 'react'
 
-export const MovieCard = ({ Poster, Title, Type }) => {
+type PropsType = {
+  Poster: string
+  Title: string
+  Type: string
+}
+
+export const MovieCard: FC<PropsType> = props => {
+  const { Poster, Title, Type } = props
+
   return (
     <div className="row">
       <div className="col s12">

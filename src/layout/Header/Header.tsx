@@ -1,8 +1,8 @@
-import React from 'react'
+import { FC } from 'react'
 
 import styles from './Header.module.css'
 
-export const Header = () => {
+export const Header: FC = () => {
   return (
     <nav className={`${styles.navbar} blue darken-4 `}>
       <div className="nav-wrapper ">

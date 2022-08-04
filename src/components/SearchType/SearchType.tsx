@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 
 import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
 
 import styles from './SearchType.module.css'
 
-export const SearchType = ({ onChangeSearchType }) => {
-  const [valueType, setValueType] = useState('all')
+type PropsType = {
+  onChangeSearchType: (searchType: string) => void
+}
 
-  const changeValueTypeHandle = event => {
+export const SearchType: FC<PropsType> = props => {
+  const { onChangeSearchType } = props
+
+  const [valueType, setValueType] = useState('series')
+
+  const changeValueTypeHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget
 
     onChangeSearchType(value)

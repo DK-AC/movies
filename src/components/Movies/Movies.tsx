@@ -1,9 +1,23 @@
-import React from 'react'
+import { FC } from 'react'
 
 import { MovieCard } from './MovieCard'
 import styles from './Movies.module.css'
 
-export const Movies = ({ movies }) => {
+export type MoviesType = {
+  Poster: string
+  Title: string
+  Type: string
+  Year: string
+  imdbID: string
+}
+
+type PropsType = {
+  movies: MoviesType[]
+}
+
+export const Movies: FC<PropsType> = props => {
+  const { movies } = props
+
   if (!movies) {
     return <h4 className="center">Movies not found...</h4>
   }

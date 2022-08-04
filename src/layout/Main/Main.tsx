@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
 
@@ -7,7 +7,7 @@ import styles from './Main.module.css'
 const API_KEY = process.env.REACT_APP_API_KEY
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
-export const Main = () => {
+export const Main: FC = () => {
   const [movies, setMovies] = useState([])
   const [movieTitle, setMovieTitle] = useState('matrix')
   const [searchTypeMovie, setSearchTypeMovie] = useState('all')
@@ -30,10 +30,10 @@ export const Main = () => {
     setIsLoading(false)
   }, [movieTitle, searchTypeMovie, isLoading])
 
-  const changeMovieTitleHandle = title => {
+  const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
   }
-  const changeSearchTypeMovieHandle = searchType => {
+  const changeSearchTypeMovieHandle = (searchType: string): void => {
     setSearchTypeMovie(searchType)
   }
 
