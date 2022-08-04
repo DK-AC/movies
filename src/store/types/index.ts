@@ -1,2 +1,2 @@
-export type { MoviesType } from './MoviesType'
+export type { StatusType, MoviesType } from './MoviesType'
 export type { RootState, AppDispatch } from './RootStateType'

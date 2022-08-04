@@ -1,5 +1,4 @@
-import { MoviesType, RootState } from '../types'
-import { StatusType } from '../types/MoviesType'
+import { MoviesType, RootState, StatusType } from '../types'
 
 export const getMovies = (state: RootState): MoviesType[] => state.movie.movies
 

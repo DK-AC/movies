@@ -37,7 +37,7 @@ export const Main: FC = () => {
       })
 
     dispatch(changeStatus('resolved'))
-  }, [movieTitle, searchTypeMovie, status])
+  }, [dispatch, movieTitle, searchTypeMovie, status])
 
   const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
