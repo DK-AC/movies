@@ -3,8 +3,8 @@ import { FC, useEffect, useState } from 'react'
 import { Movies, Preloader, Search, SearchType } from '../../components'
 import { EMPTY_STRING } from '../../constans'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { getMovies } from '../../store/selectors'
-import { setMovies } from '../../store/slices/movieSlice'
+import { getMovies, getStatus } from '../../store/selectors'
+import { changeStatus, setMovies } from '../../store/slices/movieSlice'
 
 import styles from './Main.module.css'
 
@@ -15,17 +15,17 @@ export const Main: FC = () => {
   const dispatch = useAppDispatch()
 
   const movies = useAppSelector(getMovies)
+  const status = useAppSelector(getStatus)
 
   const [movieTitle, setMovieTitle] = useState('matrix')
   const [searchTypeMovie, setSearchTypeMovie] = useState('all')
-  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const searchType = `${
       searchTypeMovie === 'all' ? EMPTY_STRING : `&type=${searchTypeMovie}`
     }`
 
-    setIsLoading(true)
+    dispatch(changeStatus('pending'))
 
     fetch(`${BASE_URL}?apikey=${API_KEY}&s=${movieTitle}${searchType}`)
       .then(response => {
@@ -36,8 +36,8 @@ export const Main: FC = () => {
         setSearchTypeMovie(searchTypeMovie)
       })
 
-    setIsLoading(false)
-  }, [movieTitle, searchTypeMovie, isLoading])
+    dispatch(changeStatus('resolved'))
+  }, [movieTitle, searchTypeMovie, status])
 
   const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
@@ -50,7 +50,7 @@ export const Main: FC = () => {
     <main className={styles.content}>
       <Search onChangeMovieTitle={changeMovieTitleHandle} />
       <SearchType onChangeSearchType={changeSearchTypeMovieHandle} />
-      {isLoading ? <Preloader /> : <Movies movies={movies} />}
+      {status !== 'resolved' ? <Preloader /> : <Movies movies={movies} />}
     </main>
   )
 }

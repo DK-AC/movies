@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { MoviesType } from '../types'
+import { StatusType } from '../types/MoviesType'
 
 const initialState = {
   movies: [] as MoviesType[],
+  status: 'idle' as StatusType,
 }
 
 export const movieSlice = createSlice({
@@ -13,10 +15,13 @@ export const movieSlice = createSlice({
     setMovies: (state: InitialStateType, action: PayloadAction<MoviesType[]>) => {
       state.movies = action.payload
     },
+    changeStatus: (state: InitialStateType, action: PayloadAction<StatusType>) => {
+      state.status = action.payload
+    },
   },
 })
 
-export const { setMovies } = movieSlice.actions
+export const { setMovies, changeStatus } = movieSlice.actions
 
 export const movieReducer = movieSlice.reducer
 
