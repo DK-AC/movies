@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { MoviesType } from '../types'
-import { StatusType } from '../types/MoviesType'
+import { MoviesType, StatusType } from '../types'
 
 const initialState = {
   movies: [] as MoviesType[],
