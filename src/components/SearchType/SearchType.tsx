@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react'
 
+import { Type } from '../../enum'
 import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
 
 import styles from './SearchType.module.css'
@@ -11,31 +12,31 @@ type PropsType = {
 export const SearchType: FC<PropsType> = props => {
   const { onChangeSearchType } = props
 
-  const [valueType, setValueType] = useState('all')
+  const [valueType, setValueType] = useState(Type.ALL)
 
   const changeValueTypeHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget
 
     onChangeSearchType(value)
-    setValueType(value)
+    setValueType(value as Type)
   }
 
   return (
     <div className={styles.searchType}>
       <SearchTypeInput
-        value="all"
+        value={Type.ALL}
         name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
-        value="movie"
+        value={Type.MOVIE}
         name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
-        value="series"
+        value={Type.SERIES}
         name="groupType"
         valueType={valueType}
         callback={changeValueTypeHandle}
