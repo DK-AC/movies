@@ -1,6 +1,7 @@
 import axios from 'axios'
 
+import { BASE_URL } from '../../constans'
+
 export const apiConfig = axios.create({
-  baseURL: 'https://www.omdbapi.com/',
-  responseType: 'json',
+  baseURL: BASE_URL,
 })

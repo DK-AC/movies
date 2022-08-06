@@ -9,7 +9,7 @@ export type ThunkAPIType = {
   dispatch: (action: any) => any
 }
 
-export const setMoviesThunk = createAsyncThunk<
+export const setMovies = createAsyncThunk<
   { movies: MoviesType[] },
   ParamsMoviesType,
   ThunkAPIType
@@ -22,6 +22,7 @@ export const setMoviesThunk = createAsyncThunk<
 
     return { movies: res.Search }
   } catch (err) {
-    console.log(err)
+    dispatch(setStatus('pending'))
+    console.error(err)
   }
 })

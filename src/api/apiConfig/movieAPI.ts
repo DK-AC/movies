@@ -7,6 +7,7 @@ import { apiConfig } from './index'
 export type ParamsMoviesType = {
   movieTitle: string
   apiKey: string
+  type: string
 }
 
 export type ResponseMoviesType<T> = {
@@ -16,10 +17,10 @@ export type ResponseMoviesType<T> = {
 }
 
 export const movieAPI = {
-  getMovies({ movieTitle, apiKey }: ParamsMoviesType) {
+  getMovies({ movieTitle, apiKey, type }: ParamsMoviesType) {
     return apiConfig
       .get<any, AxiosResponse<ResponseMoviesType<MoviesType[]>>, MoviesType[]>(
-        `?s=${movieTitle}&apikey=${apiKey}`,
+        `?s=${movieTitle}&type=${type}&apikey=${apiKey}`,
       )
       .then(data => data.data)
   },

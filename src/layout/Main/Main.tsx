@@ -1,14 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
+import { API_KEY } from '../../constans'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { setMoviesThunk } from '../../store/middlewares'
+import { setMovies } from '../../store/middlewares'
 import { getMovies, getStatus } from '../../store/selectors'
 
 import styles from './Main.module.css'
-
-const API_KEY = process.env.REACT_APP_API_KEY
-// const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export const Main: FC = () => {
   const dispatch = useAppDispatch()
@@ -21,7 +19,7 @@ export const Main: FC = () => {
 
   useEffect(() => {
     if (API_KEY) {
-      dispatch(setMoviesThunk({ movieTitle, apiKey: API_KEY }))
+      dispatch(setMovies({ movieTitle, apiKey: API_KEY, type: 'series' }))
     }
   }, [dispatch, movieTitle, searchTypeMovie])
 

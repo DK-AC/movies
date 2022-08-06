@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { setMoviesThunk } from '../middlewares'
+import { setMovies } from '../middlewares'
 import { MoviesType, StatusType } from '../types'
 
 const initialState = {
@@ -12,21 +12,18 @@ export const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    setMovies: (state: InitialStateType, action: PayloadAction<MoviesType[]>) => {
-      state.movies = action.payload
-    },
     setStatus: (state: InitialStateType, action: PayloadAction<StatusType>) => {
       state.status = action.payload
     },
   },
   extraReducers: builder => {
-    builder.addCase(setMoviesThunk.fulfilled, (state: InitialStateType, action) => {
+    builder.addCase(setMovies.fulfilled, (state: InitialStateType, action) => {
       state.movies = action.payload.movies
     })
   },
 })
 
-export const { setMovies, setStatus } = movieSlice.actions
+export const { setStatus } = movieSlice.actions
 
 export const movieReducer = movieSlice.reducer
 
