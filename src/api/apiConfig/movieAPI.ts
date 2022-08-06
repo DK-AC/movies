@@ -1,20 +1,9 @@
 import { AxiosResponse } from 'axios'
 
 import { MoviesType } from '../../store/types'
+import { ParamsMoviesType, ResponseMoviesType } from '../types'
 
 import { apiConfig } from './index'
-
-export type ParamsMoviesType = {
-  movieTitle: string
-  apiKey: string
-  type: string
-}
-
-export type ResponseMoviesType<T> = {
-  Search: T
-  totalResults: string
-  Response: boolean
-}
 
 export const movieAPI = {
   getMovies({ movieTitle, apiKey, type }: ParamsMoviesType) {

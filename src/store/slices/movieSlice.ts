@@ -1,18 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { Status } from '../../enum'
 import { setMovies } from '../middlewares'
-import { MoviesType, StatusType } from '../types'
+import { MoviesType } from '../types'
 
 const initialState = {
   movies: [] as MoviesType[],
-  status: 'idle' as StatusType,
+  status: Status.IDLE as Status,
 }
 
 export const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    setStatus: (state: InitialStateType, action: PayloadAction<StatusType>) => {
+    setStatus: (state: InitialStateType, action: PayloadAction<Status>) => {
       state.status = action.payload
     },
   },

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { movieAPI } from '../../api'
-import { ParamsMoviesType } from '../../api/apiConfig/movieAPI'
+import { movieAPI, ParamsMoviesType } from '../../api'
+import { Status } from '../../enum'
 import { setStatus } from '../slices/movieSlice'
 import { MoviesType } from '../types'
 
@@ -14,15 +14,15 @@ export const setMovies = createAsyncThunk<
   ParamsMoviesType,
   ThunkAPIType
 >('movie/getMovies', async (params, { dispatch }) => {
-  dispatch(setStatus('pending'))
+  dispatch(setStatus(Status.PENDING))
   try {
     const res = await movieAPI.getMovies(params)
 
-    dispatch(setStatus('resolved'))
+    dispatch(setStatus(Status.RESOLVED))
 
     return { movies: res.Search }
   } catch (err) {
-    dispatch(setStatus('pending'))
+    dispatch(setStatus(Status.REJECTED))
     console.error(err)
   }
 })

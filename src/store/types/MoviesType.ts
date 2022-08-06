@@ -5,4 +5,3 @@ export type MoviesType = {
   Year: string
   imdbID: string
 }
-export type StatusType = 'idle' | 'pending' | 'resolved' | 'rejected'
