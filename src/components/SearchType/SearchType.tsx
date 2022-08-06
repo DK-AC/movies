@@ -6,7 +6,7 @@ import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
 import styles from './SearchType.module.css'
 
 type PropsType = {
-  onChangeSearchType: (searchType: string) => void
+  onChangeSearchType: (searchType: Type) => void
 }
 
 export const SearchType: FC<PropsType> = props => {
@@ -17,7 +17,7 @@ export const SearchType: FC<PropsType> = props => {
   const changeValueTypeHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget
 
-    onChangeSearchType(value)
+    onChangeSearchType(value as Type)
     setValueType(value as Type)
   }
 

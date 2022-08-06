@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
 import { API_KEY } from '../../constans'
-import { Status } from '../../enum'
+import { Status, Type } from '../../enum'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setMovies } from '../../store/middlewares'
 import { getMovies, getStatus } from '../../store/selectors'
@@ -16,7 +16,7 @@ export const Main: FC = () => {
   const status = useAppSelector(getStatus)
 
   const [movieTitle, setMovieTitle] = useState('matrix')
-  const [searchTypeMovie, setSearchTypeMovie] = useState('all')
+  const [searchTypeMovie, setSearchTypeMovie] = useState(Type.ALL)
 
   useEffect(() => {
     if (API_KEY) {
@@ -27,7 +27,8 @@ export const Main: FC = () => {
   const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
   }
-  const changeSearchTypeMovieHandle = (searchType: string): void => {
+  const changeSearchTypeMovieHandle = (searchType: Type): void => {
+    console.log(searchType)
     setSearchTypeMovie(searchType)
   }
 
