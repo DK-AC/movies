@@ -1,15 +1,14 @@
 import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
-import { EMPTY_STRING } from '../../constans'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { setMoviesThunk } from '../../store/middlewares'
 import { getMovies, getStatus } from '../../store/selectors'
-import { changeStatus, setMovies } from '../../store/slices/movieSlice'
 
 import styles from './Main.module.css'
 
 const API_KEY = process.env.REACT_APP_API_KEY
-const BASE_URL = process.env.REACT_APP_BASE_URL
+// const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export const Main: FC = () => {
   const dispatch = useAppDispatch()
@@ -21,23 +20,29 @@ export const Main: FC = () => {
   const [searchTypeMovie, setSearchTypeMovie] = useState('all')
 
   useEffect(() => {
-    const searchType = `${
-      searchTypeMovie === 'all' ? EMPTY_STRING : `&type=${searchTypeMovie}`
-    }`
+    if (API_KEY) {
+      dispatch(setMoviesThunk({ movieTitle, apiKey: API_KEY }))
+    }
+  }, [dispatch, movieTitle, searchTypeMovie])
 
-    dispatch(changeStatus('pending'))
-
-    fetch(`${BASE_URL}?apikey=${API_KEY}&s=${movieTitle}${searchType}`)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        dispatch(setMovies(data.Search))
-        setSearchTypeMovie(searchTypeMovie)
-      })
-
-    dispatch(changeStatus('resolved'))
-  }, [dispatch, movieTitle, searchTypeMovie, status])
+  // useEffect(() => {
+  //   const searchType = `${
+  //     searchTypeMovie === 'all' ? EMPTY_STRING : `&type=${searchTypeMovie}`
+  //   }`
+  //
+  //   dispatch(setStatus('pending'))
+  //
+  //   fetch(`${BASE_URL}?apikey=${API_KEY}&s=${movieTitle}${searchType}`)
+  //     .then(response => {
+  //       return response.json()
+  //     })
+  //     .then(data => {
+  //       dispatch(setMovies(data.Search))
+  //       setSearchTypeMovie(searchTypeMovie)
+  //     })
+  //
+  //   dispatch(setStatus('resolved'))
+  // }, [dispatch, movieTitle, searchTypeMovie, status])
 
   const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
