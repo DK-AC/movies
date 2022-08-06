@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react'
 
 import { Movies, Preloader, Search, SearchType } from '../../components'
 import { API_KEY } from '../../constans'
+import { Status } from '../../enum'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setMovies } from '../../store/middlewares'
 import { getMovies, getStatus } from '../../store/selectors'
@@ -23,25 +24,6 @@ export const Main: FC = () => {
     }
   }, [dispatch, movieTitle, searchTypeMovie])
 
-  // useEffect(() => {
-  //   const searchType = `${
-  //     searchTypeMovie === 'all' ? EMPTY_STRING : `&type=${searchTypeMovie}`
-  //   }`
-  //
-  //   dispatch(setStatus('pending'))
-  //
-  //   fetch(`${BASE_URL}?apikey=${API_KEY}&s=${movieTitle}${searchType}`)
-  //     .then(response => {
-  //       return response.json()
-  //     })
-  //     .then(data => {
-  //       dispatch(setMovies(data.Search))
-  //       setSearchTypeMovie(searchTypeMovie)
-  //     })
-  //
-  //   dispatch(setStatus('resolved'))
-  // }, [dispatch, movieTitle, searchTypeMovie, status])
-
   const changeMovieTitleHandle = (title: string): void => {
     setMovieTitle(title)
   }
@@ -53,7 +35,7 @@ export const Main: FC = () => {
     <main className={styles.content}>
       <Search onChangeMovieTitle={changeMovieTitleHandle} />
       <SearchType onChangeSearchType={changeSearchTypeMovieHandle} />
-      {status !== 'resolved' ? <Preloader /> : <Movies movies={movies} />}
+      {status !== Status.RESOLVED ? <Preloader /> : <Movies movies={movies} />}
     </main>
   )
 }

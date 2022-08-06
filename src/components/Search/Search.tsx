@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
 
 import { EMPTY_STRING } from '../../constans'
 import { Nullable } from '../../types'
@@ -29,6 +29,12 @@ export const Search: FC<PropsType> = props => {
     }
   }
 
+  const searchMoviesEnterKeyPress = (event: KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      searchMovieTitleClick()
+    }
+  }
+
   return (
     <div className="row">
       <input
@@ -37,6 +43,7 @@ export const Search: FC<PropsType> = props => {
         className="center"
         value={movieTitle}
         onChange={onSearchMoviesHandle}
+        onKeyDown={searchMoviesEnterKeyPress}
       />
       <button
         className={`btn ${styles.searchButton} blue darken-4`}
