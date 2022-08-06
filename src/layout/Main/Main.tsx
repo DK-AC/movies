@@ -19,7 +19,7 @@ export const Main: FC = () => {
 
   useEffect(() => {
     if (API_KEY) {
-      dispatch(setMovies({ movieTitle, apiKey: API_KEY, type: 'series' }))
+      dispatch(setMovies({ movieTitle, apiKey: API_KEY, type: searchTypeMovie }))
     }
   }, [dispatch, movieTitle, searchTypeMovie])
 
