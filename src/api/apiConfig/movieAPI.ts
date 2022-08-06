@@ -7,11 +7,11 @@ import { ParamsMoviesType, ResponseMoviesType } from '../types'
 import { apiConfig } from './index'
 
 export const movieAPI = {
-  getMovies({ movieTitle, apiKey, type }: ParamsMoviesType) {
+  getMovies({ movieTitle, apiKey, movieType }: ParamsMoviesType) {
     return apiConfig
       .get<any, AxiosResponse<ResponseMoviesType<MoviesType[]>>, MoviesType[]>(
         `?s=${movieTitle}&apikey=${apiKey}
-${type === 'all' ? EMPTY_STRING : `&type=${type}`}`,
+${movieType === 'all' ? EMPTY_STRING : `&type=${movieType}`}`,
       )
       .then(data => data.data)
   },

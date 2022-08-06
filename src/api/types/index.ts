@@ -1,7 +1,7 @@
 export type ParamsMoviesType = {
   movieTitle: string
   apiKey: string
-  type: string
+  movieType: string
 }
 
 export type ResponseMoviesType<T> = {

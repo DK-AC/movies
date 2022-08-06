@@ -3,11 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { movieAPI, ParamsMoviesType } from '../../api'
 import { Status } from '../../enum'
 import { setStatus } from '../slices/movieSlice'
-import { MoviesType } from '../types'
-
-export type ThunkAPIType = {
-  dispatch: (action: any) => any
-}
+import { MoviesType, ThunkAPIType } from '../types'
 
 export const setMovies = createAsyncThunk<
   { movies: MoviesType[] },
@@ -23,6 +19,5 @@ export const setMovies = createAsyncThunk<
     return { movies: res.Search }
   } catch (err) {
     dispatch(setStatus(Status.REJECTED))
-    console.error(err)
   }
 })

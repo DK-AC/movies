@@ -16,26 +16,25 @@ export const Main: FC = () => {
   const status = useAppSelector(getStatus)
 
   const [movieTitle, setMovieTitle] = useState('matrix')
-  const [searchTypeMovie, setSearchTypeMovie] = useState(Type.ALL)
+  const [movieType, setMovieType] = useState(Type.ALL)
 
   useEffect(() => {
     if (API_KEY) {
-      dispatch(setMovies({ movieTitle, apiKey: API_KEY, type: searchTypeMovie }))
+      dispatch(setMovies({ movieTitle, apiKey: API_KEY, movieType }))
     }
-  }, [dispatch, movieTitle, searchTypeMovie])
+  }, [dispatch, movieTitle, movieType])
 
-  const changeMovieTitleHandle = (title: string): void => {
-    setMovieTitle(title)
+  const changeMovieTitleHandle = (movieTitle: string): void => {
+    setMovieTitle(movieTitle)
   }
-  const changeSearchTypeMovieHandle = (searchType: Type): void => {
-    console.log(searchType)
-    setSearchTypeMovie(searchType)
+  const changeMovieTypeHandle = (movieType: Type): void => {
+    setMovieType(movieType)
   }
 
   return (
     <main className={styles.content}>
       <Search onChangeMovieTitle={changeMovieTitleHandle} />
-      <SearchType onChangeSearchType={changeSearchTypeMovieHandle} />
+      <SearchType onChangeMovieType={changeMovieTypeHandle} />
       {status !== Status.RESOLVED ? <Preloader /> : <Movies movies={movies} />}
     </main>
   )

@@ -6,19 +6,19 @@ import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
 import styles from './SearchType.module.css'
 
 type PropsType = {
-  onChangeSearchType: (searchType: Type) => void
+  onChangeMovieType: (movieType: Type) => void
 }
 
 export const SearchType: FC<PropsType> = props => {
-  const { onChangeSearchType } = props
+  const { onChangeMovieType } = props
 
-  const [valueType, setValueType] = useState(Type.ALL)
+  const [movieType, setMovieType] = useState(Type.ALL)
 
   const changeValueTypeHandle = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.currentTarget
 
-    onChangeSearchType(value as Type)
-    setValueType(value as Type)
+    onChangeMovieType(value as Type)
+    setMovieType(value as Type)
   }
 
   return (
@@ -26,19 +26,19 @@ export const SearchType: FC<PropsType> = props => {
       <SearchTypeInput
         value={Type.ALL}
         name="groupType"
-        valueType={valueType}
+        movieType={movieType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
         value={Type.MOVIE}
         name="groupType"
-        valueType={valueType}
+        movieType={movieType}
         callback={changeValueTypeHandle}
       />
       <SearchTypeInput
         value={Type.SERIES}
         name="groupType"
-        valueType={valueType}
+        movieType={movieType}
         callback={changeValueTypeHandle}
       />
     </div>

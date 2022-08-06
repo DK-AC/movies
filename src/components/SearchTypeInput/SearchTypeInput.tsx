@@ -3,12 +3,12 @@ import React, { ChangeEvent, FC } from 'react'
 type PropsType = {
   name: string
   callback: (value: ChangeEvent<HTMLInputElement>) => void
-  valueType: string
+  movieType: string
   value: string
 }
 
 export const SearchTypeInput: FC<PropsType> = props => {
-  const { name, callback, valueType, value } = props
+  const { name, callback, movieType, value } = props
 
   return (
     <label htmlFor={value}>
@@ -17,7 +17,7 @@ export const SearchTypeInput: FC<PropsType> = props => {
         name={name}
         type="radio"
         value={value}
-        checked={valueType === value}
+        checked={movieType === value}
         onChange={callback}
       />
       <span>{`Show ${value}`}</span>
