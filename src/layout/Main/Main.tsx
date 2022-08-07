@@ -1,6 +1,6 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 
-import { Movies, Preloader, Search, SearchType } from '../../components'
+import { Movies, Preloader, SearchMovies, SearchType } from '../../components'
 import { API_KEY } from '../../constans'
 import { Status, Type } from '../../enum'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
@@ -24,16 +24,22 @@ export const Main: FC = () => {
     }
   }, [dispatch, movieTitle, movieType])
 
-  const changeMovieTitleHandle = (movieTitle: string): void => {
-    setMovieTitle(movieTitle)
-  }
-  const changeMovieTypeHandle = (movieType: Type): void => {
-    setMovieType(movieType)
-  }
+  const changeMovieTitleHandle = useCallback(
+    (movieTitle: string): void => {
+      setMovieTitle(movieTitle)
+    },
+    [movieTitle],
+  )
+  const changeMovieTypeHandle = useCallback(
+    (movieType: Type): void => {
+      setMovieType(movieType)
+    },
+    [movieType],
+  )
 
   return (
     <main className={styles.content}>
-      <Search onChangeMovieTitle={changeMovieTitleHandle} />
+      <SearchMovies onChangeMovieTitle={changeMovieTitleHandle} />
       <SearchType onChangeMovieType={changeMovieTypeHandle} />
       {status !== Status.RESOLVED ? <Preloader /> : <Movies movies={movies} />}
     </main>

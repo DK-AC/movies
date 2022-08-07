@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, memo, useState } from 'react'
 
 import { Type } from '../../enum'
 import { SearchTypeInput } from '../SearchTypeInput/SearchTypeInput'
@@ -9,7 +9,7 @@ type PropsType = {
   onChangeMovieType: (movieType: Type) => void
 }
 
-export const SearchType: FC<PropsType> = props => {
+export const SearchType: FC<PropsType> = memo(props => {
   const { onChangeMovieType } = props
 
   const [movieType, setMovieType] = useState(Type.ALL)
@@ -43,4 +43,4 @@ export const SearchType: FC<PropsType> = props => {
       />
     </div>
   )
-}
+})

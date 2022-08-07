@@ -1,15 +1,15 @@
-import { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
+import { ChangeEvent, FC, KeyboardEvent, memo, useState } from 'react'
 
 import { EMPTY_STRING } from '../../constans'
 import { Nullable } from '../../types'
 
-import styles from './Search.module.css'
+import styles from './SearchMovies.module.css'
 
 type PropsType = {
   onChangeMovieTitle: (MovieTitle: string) => void
 }
 
-export const Search: FC<PropsType> = props => {
+export const SearchMovies: FC<PropsType> = memo(props => {
   const { onChangeMovieTitle } = props
 
   const [movieTitle, setMovieTitle] = useState<string>(EMPTY_STRING)
@@ -55,4 +55,4 @@ export const Search: FC<PropsType> = props => {
       {error ? <div className={styles.error}>{error}</div> : EMPTY_STRING}
     </div>
   )
-}
+})
