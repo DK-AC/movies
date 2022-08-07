@@ -15,7 +15,7 @@ export const Main: FC = () => {
   const movies = useAppSelector(getMovies)
   const status = useAppSelector(getStatus)
 
-  const [movieTitle, setMovieTitle] = useState('matrix')
+  const [movieTitle, setMovieTitle] = useState('National')
   const [movieType, setMovieType] = useState(Type.ALL)
 
   useEffect(() => {
@@ -24,18 +24,12 @@ export const Main: FC = () => {
     }
   }, [dispatch, movieTitle, movieType])
 
-  const changeMovieTitleHandle = useCallback(
-    (movieTitle: string): void => {
-      setMovieTitle(movieTitle)
-    },
-    [movieTitle],
-  )
-  const changeMovieTypeHandle = useCallback(
-    (movieType: Type): void => {
-      setMovieType(movieType)
-    },
-    [movieType],
-  )
+  const changeMovieTitleHandle = useCallback((movieTitle: string): void => {
+    setMovieTitle(movieTitle)
+  }, [])
+  const changeMovieTypeHandle = useCallback((movieType: Type): void => {
+    setMovieType(movieType)
+  }, [])
 
   return (
     <main className={styles.content}>
