@@ -14,8 +14,15 @@ export const MovieCard: FC<PropsType> = props => {
       <div className="col s12">
         <div className="card">
           <div className="card-image">
-            <img src={Poster} alt="poster" />
-            <span className="card-title">{Title}</span>
+            {Poster === 'N/A' ? (
+              <img
+                alt="poster"
+                className="activator"
+                src="https://picsum.photos/300/400.jpg"
+              />
+            ) : (
+              <img alt="poster" className="activator" src={Poster} />
+            )}
           </div>
           <div className="card-content center">
             <p>
