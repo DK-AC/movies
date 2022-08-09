@@ -9,6 +9,8 @@ type PropsType = {
 export const MovieCard: FC<PropsType> = props => {
   const { Poster, Title, Type } = props
 
+  console.log('MovieCard')
+
   return (
     <div className="row">
       <div className="col s12">
