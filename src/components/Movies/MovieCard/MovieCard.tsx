@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import styles from './MovieCard.module.css'
+
 type PropsType = {
   Poster: string
   Title: string
@@ -9,10 +11,8 @@ type PropsType = {
 export const MovieCard: FC<PropsType> = props => {
   const { Poster, Title, Type } = props
 
-  console.log('MovieCard')
-
   return (
-    <div className="row">
+    <div className={`${styles.cards} row`}>
       <div className="col s12">
         <div className="card">
           <div className="card-image">
