@@ -13,6 +13,7 @@ export const Main: FC = () => {
   const dispatch = useAppDispatch()
 
   console.log('go to github')
+  console.log('go to github')
 
   const movies = useAppSelector(getMovies)
   const status = useAppSelector(getStatus)
