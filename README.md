@@ -8,7 +8,6 @@ Technologies Used
 React: JavaScript library for building user interfaces
 Redux: State management library for JavaScript applications
 Axios: Promise-based HTTP client for making API requests
-React Router: Library for routing in React applications
 Material-UI: React component library for building user interfaces
 Jest: JavaScript testing framework
 ESLint: JavaScript linter for code quality and style
