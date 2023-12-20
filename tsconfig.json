@@ -7,8 +7,11 @@
       "dom.iterable",
       "esnext"
     ],
-    "files": ["./node_modules/wmr/types.d.ts"],
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

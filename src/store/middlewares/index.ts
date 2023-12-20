@@ -16,8 +16,9 @@ export const setMovies = createAsyncThunk<
 
     dispatch(setStatus(Status.RESOLVED))
 
-    return { movies: res.Search }
+    return { movies: res.Search } as { movies: MoviesType[] } // Add type assertion here
   } catch (err) {
     dispatch(setStatus(Status.REJECTED))
+    throw err // Throw the error to be caught by the rejectWithValue handler
   }
 })
