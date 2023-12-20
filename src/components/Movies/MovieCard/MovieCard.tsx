@@ -11,8 +11,6 @@ type PropsType = {
 export const MovieCard: FC<PropsType> = props => {
   const { Poster, Title, Type } = props
 
-  console.log('need refactoring')
-
   return (
     <div className={`${styles.cards} row`}>
       <div className="col s12">
